@@ -4,7 +4,9 @@ import com.springframework.manojdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"com.springframework.manojdi","com.springframework.i18nservices"})
 @SpringBootApplication
 public class ManojDiApplication {
 
