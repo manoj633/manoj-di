@@ -1,6 +1,8 @@
 package com.springframework.manojdi.config;
 
 import com.springframework.i18nservices.I18nEnglishGreetingService;
+import com.springframework.manojdi.repositories.EnglishGreetingRepository;
+import com.springframework.manojdi.repositories.EnglishGreetingRepositoryImpl;
 import com.springframework.manojdi.services.ConstructorInjectedGreetingServiceImpl;
 import com.springframework.manojdi.services.PrimaryGreetingService;
 import com.springframework.manojdi.services.PropertyInjectedGreetingServiceimpl;
@@ -28,11 +30,14 @@ public class GreetingServiceConfig {
         return new SetterInjectedGreetingServiceimpl();
     }
 
-
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository() {
+        return new EnglishGreetingRepositoryImpl();
+    }
     @Profile("EN")
     @Bean
-    I18nEnglishGreetingService i18nService() {
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService i18nService(EnglishGreetingRepository englishGreetingRepository) {
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
     @Primary
