@@ -7,11 +7,9 @@ import com.springframework.manojdi.services.ConstructorInjectedGreetingServiceIm
 import com.springframework.manojdi.services.PrimaryGreetingService;
 import com.springframework.manojdi.services.PropertyInjectedGreetingServiceimpl;
 import com.springframework.manojdi.services.SetterInjectedGreetingServiceimpl;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
+@ImportResource("classpath:manojdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -25,7 +23,8 @@ public class GreetingServiceConfig {
         return new PropertyInjectedGreetingServiceimpl();
     }
 
-    @Bean
+    //configured from xml
+//    @Bean
     SetterInjectedGreetingServiceimpl setterInjectedGreetingServiceimpl() {
         return new SetterInjectedGreetingServiceimpl();
     }
